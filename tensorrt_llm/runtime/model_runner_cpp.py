@@ -212,6 +212,7 @@ class ModelRunnerCpp(ModelRunnerMixin):
             sink_token_length=sink_token_length,
             max_tokens=max_tokens_in_paged_kv_cache,
             enable_block_reuse=kv_cache_enable_block_reuse)
+        print(f"kv_cache_config: {kv_cache_config.__dir__()}")
 
         decoding_config = trtllm.DecodingConfig()
         if medusa_choices is not None:

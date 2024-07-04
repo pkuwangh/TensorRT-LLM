@@ -31,6 +31,7 @@ from tensorrt_llm.logger import logger
 from tensorrt_llm.runtime import PYTHON_BINDINGS, ModelRunner
 
 if PYTHON_BINDINGS:
+    print(f"Using C++ session because PYTHON_BINDINGS={PYTHON_BINDINGS}.")
     from tensorrt_llm.runtime import ModelRunnerCpp
 
 
@@ -338,6 +339,7 @@ def main(args):
             enable_chunked_context=args.enable_chunked_context,
         )
     runner = runner_cls.from_dir(**runner_kwargs)
+    print(f"Using {runner_cls.__name__}: {runner}.")
 
     with torch.no_grad():
         outputs = runner.generate(
